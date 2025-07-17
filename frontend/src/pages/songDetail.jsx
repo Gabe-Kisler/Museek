@@ -6,6 +6,9 @@ import DisplaySongs from '../components/DisplaySongs';
 import Header from '../components/Header';
 import '../css/song-detail.css';
 
+import { useRecommendationAlgorithm } from './hooks/useRecommendationAlgorithm';
+
+
 function SongDetail() {
   const location = useLocation();
   const track = location.state?.track;
@@ -105,13 +108,7 @@ function SongDetail() {
             </div>
           </div>
         </div>
-        <DisplaySongs
-          title={`More by ${track.artist}`}
-          tracks={moreSongs}
-          loading={loadingMoreSongs}
-          error={errorMoreSongs}
-          dropdownOptions={[]} 
-        />
+
 
       </div>
 

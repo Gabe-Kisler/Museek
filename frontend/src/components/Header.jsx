@@ -111,7 +111,7 @@ const Header = forwardRef (function Header(props, searchRef) {
 
       try {
         setLoading(true);
-        const res = await fetch("http://127.0.0.1:5000/search-bar", {
+        const res = await fetch("/search-bar", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ query: value, "filter": searchFilter })
