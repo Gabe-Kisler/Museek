@@ -1,0 +1,29 @@
+.tag-picker {
+  margin-top: 0;
+}
+
+.tag-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-radius: 8px;
+}
+
+.tag-option {
+  background-color: var(--light-blue);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: none;
+}
+
+.tag-option:hover {
+  background-color: #e9e9e9;
+}
+
+.no-genres {
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+

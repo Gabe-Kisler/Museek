@@ -1,0 +1,142 @@
+.favorites-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+
+    height: auto;
+    margin-top: 18vh;
+}
+
+.favorites-page {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+}
+
+.header-test {
+    height: 10vh;
+}
+
+.favorite-item {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: 5vh;
+    width: 20vw;
+    padding-top: 1vh; padding-bottom: 1vh;
+
+    align-items: center;
+    justify-content: left;
+
+    background-color: rgba(139, 139, 139, 0.3);
+    border-radius: 1vw;
+
+}
+
+
+
+.delete-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1vh;
+  padding: 0;
+  line-height: 3vh;
+
+  margin-right: .4rem;
+  margin-left: auto;
+
+}
+
+.delete-btn:hover {
+    cursor: url('../assets/cursor-hover.svg'), auto;
+}
+
+.favorites-heading {
+    display: flex; 
+    flex-direction: row;
+    gap: 2vw;
+    align-items: center;
+
+    height: auto;
+    margin-bottom: 1vh;
+}
+
+.add-favorite {
+    background-color: var(--light-blue);
+    border: none;
+    border-radius: .3vw;
+    height: fit-content;
+}
+
+.add-favorite:hover {
+    cursor: url('../assets/cursor-hover.svg'), auto;
+    background-color: var(--light-blue-hover);
+}
+
+.preferences-container {
+    background-color: var(--grey-overlay);
+    padding: 2vw;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    max-width: 64vw;
+    min-width: 60vw;
+
+    height: auto;
+}
+
+.songs-container {
+    background-color: var(--grey-overlay);
+    padding: 2vw;
+    border-radius: 1vw;
+    width: 64vw;
+
+    max-height: 40vh;
+    overflow-y: auto;
+
+    display: block;
+}
+
+.favorite-songs-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 1rem;
+    margin-top: 1rem;
+
+}
+
+.cover {
+    width: 3vw;
+    margin-left: 2vw;
+    border-radius: .4vw;
+    margin-right: 1vw;
+}
+
+.favorite-info {
+    font-size: .7rem;
+}
+
+.trash-icon {
+    scale: .5;
+    margin-left: auto;
+}
+
+.preference-item {
+    background-color: rgba(139, 139, 139, 0.3);
+    border-radius: .5rem;
+    margin: .6rem;
+    padding: .2rem .5rem;
+
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.favorite-genre {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+

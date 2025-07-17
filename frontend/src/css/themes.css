@@ -1,0 +1,6 @@
+:root {
+    --grey-overlay: rgba(99, 99, 99, 0.4);
+    --grey-overlay-hover: rgba(134, 134, 134, 0.4);
+    --light-blue: rgb(92, 143, 206);
+    --light-blue-hover: rgb(110, 160, 221);
+}

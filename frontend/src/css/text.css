@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+
+h1 {
+    font-size: 5vw;
+    color: rgb(181, 181, 181);
+    font-weight: bolder;
+    letter-spacing: .6vw;
+    user-select: none;
+}
+
+h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 4vw;
+    color: rgb(181, 181, 181);
+    font-weight: bolder;
+    letter-spacing: .2vw;
+    user-select: none;
+    line-height: 6vh;
+
+    margin: 0;
+}
+
+h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4vw;
+    font-weight: bolder;
+    letter-spacing: .1vw;
+    user-select: none;
+    color: var(--text-color);
+    line-height: 3vh;
+
+    margin: 0;
+}
+
+h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1vw;
+    color: rgb(129, 129, 129);
+    font-weight: bolder;
+    user-select: none; 
+    line-height: 3vh;
+
+    margin: 0;
+}
+
+h5 {
+    font-family: 'Outfit', sans-serif;
+    font-size: .9vw;
+    color: rgb(129, 129, 129);
+    font-weight: bold;
+    user-select: none; 
+    z-index: -1;
+    line-height: 3vh;
+
+    margin: 0;
+}
+
+p {
+    font-family: 'Outfit', sans-serif;
+    font-size: .5vw;
+    color: rgb(181, 181, 181);
+
+}
+
+button {
+    font-family: 'Outfit', sans-serif;
+    font-size: .7rem;
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    user-select: none; 
+}
+
