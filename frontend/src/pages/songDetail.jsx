@@ -6,7 +6,6 @@ import DisplaySongs from '../components/DisplaySongs';
 import Header from '../components/Header';
 import '../css/song-detail.css';
 
-import { useRecommendationAlgorithm } from './hooks/useRecommendationAlgorithm';
 
 
 function SongDetail() {
@@ -22,7 +21,6 @@ function SongDetail() {
 
   const navigate = useNavigate();
 
-  const { tracks: recommendedTracks, loading: recommendedLoading, error: recommendedError } = useRecommendationAlgorithm(user?.uid);
 
   useEffect(() => {
     const auth = getAuth();
