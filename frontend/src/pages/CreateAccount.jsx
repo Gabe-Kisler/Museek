@@ -26,7 +26,7 @@ function CreateAccount({ onRegister }) {
       const userToken = await userCredential.user.getIdToken();
 
       // Send the ID token to your backend session login route
-      const response = await fetch('http://localhost:5000/session_login', {
+      const response = await fetch('/session_login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

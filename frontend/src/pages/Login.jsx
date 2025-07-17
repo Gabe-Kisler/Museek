@@ -24,7 +24,7 @@ function Login ({ onLogin }) {
             const userCred = await signInWithEmailAndPassword(auth, email, password);
             const userToken = await userCred.user.getIdToken();
 
-            const response = await fetch ('http://127.0.0.1:5000/session_login', {
+            const response = await fetch ('/session_login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

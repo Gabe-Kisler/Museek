@@ -15,7 +15,7 @@ export function useFavorites(user) {
   async function fetchFavorites(currentUser) {
     try {
       const idToken = await currentUser.getIdToken();
-      const res = await fetch('http://127.0.0.1:5000/get-favorites', {
+      const res = await fetch('/get-favorites', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export function useFavorites(user) {
   const addFavorite = async (type, data) => {
     try {
       const idToken = await user.getIdToken();
-      const res = await fetch('http://127.0.0.1:5000/store-favorite', {
+      const res = await fetch('/store-favorite', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export function useFavorites(user) {
   const deleteFavorite = async (favoriteId) => {
     try {
       const idToken = await user.getIdToken();
-      const res = await fetch('http://127.0.0.1:5000/delete-favorite', {
+      const res = await fetch('/delete-favorite', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
