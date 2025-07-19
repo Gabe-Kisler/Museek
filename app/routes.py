@@ -140,6 +140,14 @@ def get_recommended():
     
     data = request.get_json()
     music_type = data.get('type')
+    song_name = data.get('songName')
+
+    if song_name:
+        seed_song = [song_name]
+        similar_tracks = get_combined_similar_tracks(seed_song, max_total=20)
+        recommended_tracks = search_spotify_tracks(similar_tracks)
+
+        return jsonify({"tracks": recommended_tracks})
 
     user_favorites = get_user_favorites(user)
 
