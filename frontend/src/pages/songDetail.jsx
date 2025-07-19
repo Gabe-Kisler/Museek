@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/background.svg';
 import backButton from '../assets/back-button.svg';
-import DisplaySongs from '../components/DisplaySongs';
+import { getAuth } from 'firebase/auth';
 import Header from '../components/Header';
 import '../css/song-detail.css';
 
