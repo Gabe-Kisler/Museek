@@ -84,6 +84,18 @@ function SongDetail() {
     navigate('/app');
   };
 
+  if (!track) {
+    return (
+      <div className="page-body">
+        <img src={backgroundImage} className="background-image" />
+        <Header />
+        <div className="song-detail-body">
+          <p>No track data available. Please go back and select a song.</p>
+          <button onClick={() => navigate('/app')}>Go Back</button>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="page-body">
       <img src={backgroundImage} className="background-image" />
