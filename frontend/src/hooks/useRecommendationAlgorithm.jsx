@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getAuth } from "firebase/auth";
 
-function useRecommendationAlgorithm(musicType) {
+function useRecommendationAlgorithm(musicType, songName) {
   const [tracks, setTracks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
