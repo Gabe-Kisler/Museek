@@ -6,8 +6,6 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Header from '../components/Header';
 import '../css/song-detail.css';
 
-
-
 function SongDetail() {
   const location = useLocation();
   const track = location.state?.track;
@@ -21,7 +19,7 @@ function SongDetail() {
 
   const navigate = useNavigate();
 
-
+  // Move all useEffect hooks to the top, before any conditional returns
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -31,12 +29,8 @@ function SongDetail() {
     return () => unsubscribe();
   }, []);
 
-  if (authLoading) return <p>Checking authentication...</p>;
-  if (!user) return <p>Please log in to see your recommendations.</p>;
-
-
   useEffect(() => {
-    if (!track?.name) return;
+    if (!track?.name || !track?.artist) return;
 
     const query = encodeURIComponent(`${track.name} ${track.artist}`);
     fetch(`https://itunes.apple.com/search?term=${query}&media=music&limit=1`)
@@ -48,7 +42,7 @@ function SongDetail() {
         }
       })
       .catch(err => console.error("Error fetching preview:", err));
-  }, [track]);
+  }, [track?.name, track?.artist]); // Add proper dependencies
 
   useEffect(() => {
     if (!track?.artist) return;
@@ -69,8 +63,8 @@ function SongDetail() {
         return res.json();
       })
       .then(data => {
-        // filter out the current track if needed
-        const filtered = data.tracks.filter(t => t.name !== track.name);
+        // Filter out the current track if needed
+        const filtered = data.tracks?.filter(t => t.name !== track.name) || [];
         setMoreSongs(filtered);
         setLoadingMoreSongs(false);
       })
@@ -78,11 +72,15 @@ function SongDetail() {
         setErrorMoreSongs(err.message);
         setLoadingMoreSongs(false);
       });
-  }, [track]);
+  }, [track?.artist, track?.name]); // Add proper dependencies
 
   const handleClick = () => {
     navigate('/app');
   };
+
+  // Now handle conditional returns after all hooks
+  if (authLoading) return <p>Checking authentication...</p>;
+  if (!user) return <p>Please log in to see your recommendations.</p>;
 
   if (!track) {
     return (
@@ -96,6 +94,7 @@ function SongDetail() {
       </div>
     );
   }
+
   return (
     <div className="page-body">
       <img src={backgroundImage} className="background-image" />
@@ -118,10 +117,7 @@ function SongDetail() {
             </div>
           </div>
         </div>
-
-
       </div>
-
     </div>
   );
 }
