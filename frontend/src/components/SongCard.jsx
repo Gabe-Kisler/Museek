@@ -11,6 +11,8 @@ function SongCard({ track }) {
 
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const handleClick = () => {
     navigate(`/song/${track.track_id}`, { state: { track } });
   } 
@@ -26,7 +28,7 @@ const handleFavorite = async () => {
 
   try {
     const idToken = await user.getIdToken(); 
-    const res = await fetch('http://127.0.0.1:5000/store-favorite', {
+    const res = await fetch(`${API_URL}/store-favorite`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

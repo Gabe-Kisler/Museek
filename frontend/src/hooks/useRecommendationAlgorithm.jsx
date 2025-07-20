@@ -6,6 +6,8 @@ function useRecommendationAlgorithm(musicType, songName) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     const fetchRecommendations = async () => {
       setLoading(true);
@@ -22,7 +24,7 @@ function useRecommendationAlgorithm(musicType, songName) {
         
         const idToken = await user.getIdToken();
 
-        const res = await fetch('/get-recommended', {
+        const res = await fetch(`${API_URL}/get-recommended`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

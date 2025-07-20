@@ -4,6 +4,8 @@ export function useFavorites(user) {
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     if (user) {
       fetchFavorites(user);
@@ -15,7 +17,7 @@ export function useFavorites(user) {
   async function fetchFavorites(currentUser) {
     try {
       const idToken = await currentUser.getIdToken();
-      const res = await fetch('/get-favorites', {
+      const res = await fetch(`${API_URL}/get-favorites`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +37,7 @@ export function useFavorites(user) {
   const addFavorite = async (type, data) => {
     try {
       const idToken = await user.getIdToken();
-      const res = await fetch('/store-favorite', {
+      const res = await fetch(`${API_URL}/store-favorite`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +60,7 @@ export function useFavorites(user) {
   const deleteFavorite = async (favoriteId) => {
     try {
       const idToken = await user.getIdToken();
-      const res = await fetch('/delete-favorite', {
+      const res = await fetch(`${API_URL}/delete-favorite`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

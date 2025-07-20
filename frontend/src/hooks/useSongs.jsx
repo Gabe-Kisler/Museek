@@ -8,6 +8,7 @@ function useSongs(searchType, query) {
 
   useEffect(() => {
     const cached = getCachedSongs(searchType, query);
+    const API_URL = import.meta.env.VITE_API_URL;
 
     if (cached) {
       setTracks(cached);
@@ -16,7 +17,7 @@ function useSongs(searchType, query) {
     }
 
     setLoading(true);
-    fetch('/search', {
+    fetch(`${API_URL}/search`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -23,6 +23,8 @@ const Header = forwardRef (function Header(props, searchRef) {
   const overlayRef = useRef();
   const overlayInputRef = useRef();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const { onSearchStateChange, searchFilter } = props;
 
   useEffect (() => {
@@ -111,7 +113,7 @@ const Header = forwardRef (function Header(props, searchRef) {
 
       try {
         setLoading(true);
-        const res = await fetch("/search-bar", {
+        const res = await fetch(`${API_URL}/search-bar`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ query: value, "filter": searchFilter })

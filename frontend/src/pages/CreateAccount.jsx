@@ -17,6 +17,8 @@ function CreateAccount({ onRegister }) {
   const navigate = useNavigate();
   const auth = getAuth(app);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const handleRegister = async (e) => {
     e.preventDefault();
     setError(null);
@@ -26,7 +28,7 @@ function CreateAccount({ onRegister }) {
       const userToken = await userCredential.user.getIdToken();
 
       // Send the ID token to your backend session login route
-      const response = await fetch('/session_login', {
+      const response = await fetch(`${API_URL}/session_login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

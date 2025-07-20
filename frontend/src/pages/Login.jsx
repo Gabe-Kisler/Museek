@@ -17,6 +17,10 @@ function Login ({ onLogin }) {
 
     const auth = getAuth(app);
 
+    const API_URL = import.meta.env.VITE_API_URL;
+    console.log('API_URL:', API_URL); // Add this line
+    console.log('Mode:', import.meta.env.MODE); // Add this line too
+
     const handleLogin = async (e) => {
         e.preventDefault();
         
@@ -24,7 +28,7 @@ function Login ({ onLogin }) {
             const userCred = await signInWithEmailAndPassword(auth, email, password);
             const userToken = await userCred.user.getIdToken();
 
-            const response = await fetch ('/session_login', {
+            const response = await fetch (`${API_URL}/session_login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
