@@ -9,7 +9,7 @@ def create_app():
     app = Flask(__name__, static_folder=static_folder, static_url_path="")
     app.secret_key = 'secretKey'
 
-    CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5000", "https://museek-jye2.onrender.com"], supports_credentials=True)
+    CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5000", "https://museek-f10m.onrender.com"], supports_credentials=True)
 
     app.register_blueprint(routes)
 
@@ -20,10 +20,23 @@ def create_app():
     @app.route('/')
     @app.route('/<path:path>')
     def serve_react(path=""):
+        print(f"=== SERVE_REACT CALLED ===")
+        print(f"Requested path: '{path}'")
+        print(f"Static folder: {app.static_folder}")
+        
         if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+            print(f"Found static file for path: {path}")
             return send_from_directory(app.static_folder, path)
         else:
-            return send_from_directory(app.static_folder, "index.html")
+            index_path = os.path.join(app.static_folder, "index.html")
+            print(f"Serving index.html from: {index_path}")
+            print(f"Index.html exists: {os.path.exists(index_path)}")
+            
+            if os.path.exists(index_path):
+                print("✓ Successfully serving index.html")
+                return send_from_directory(app.static_folder, "index.html")
+            else:
+                print("✗ index.html NOT FOUND!")
+                return "index.html not found", 404
 
     return app
-    
