@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request
 from flask_cors import CORS
 from .routes import routes
 import os
@@ -22,7 +22,8 @@ def create_app():
     def serve_react(path=""):
         print(f"=== SERVE_REACT CALLED ===")
         print(f"Requested path: '{path}'")
-        print(f"Static folder: {app.static_folder}")
+        print(f"Full request URL: {request.url}")
+        print(f"Request method: {request.method}")
         
         if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
             print(f"Found static file for path: {path}")
@@ -30,13 +31,6 @@ def create_app():
         else:
             index_path = os.path.join(app.static_folder, "index.html")
             print(f"Serving index.html from: {index_path}")
-            print(f"Index.html exists: {os.path.exists(index_path)}")
-            
-            if os.path.exists(index_path):
-                print("✓ Successfully serving index.html")
-                return send_from_directory(app.static_folder, "index.html")
-            else:
-                print("✗ index.html NOT FOUND!")
-                return "index.html not found", 404
+            return send_from_directory(app.static_folder, "index.html")
 
     return app
