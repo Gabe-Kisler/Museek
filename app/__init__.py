@@ -5,7 +5,8 @@ import os
 
 
 def create_app():
-    app = Flask(__name__, static_folder=os.path.join("frontend", "dist"), static_url_path="")
+    static_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
+    app = Flask(__name__, static_folder=static_folder, static_url_path="")
     app.secret_key = 'secretKey'
 
     CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5000", "https://museek-jye2.onrender.com"], supports_credentials=True)
