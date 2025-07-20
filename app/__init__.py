@@ -13,6 +13,8 @@ def create_app():
     app.register_blueprint(routes)
 
     print(f"Flask static folder is: {app.static_folder}")
+    print(f"Static folder absolute path: {os.path.abspath(app.static_folder)}")
+    print(f"Static folder exists: {os.path.exists(app.static_folder)}")
 
     @app.route('/')
     @app.route('/<path:path>')
