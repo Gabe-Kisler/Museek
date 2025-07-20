@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: museek
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    buildFilter:
+      paths:
+        - frontend/**
+        - app/**
+        - run.py
+        - requirements.txt
+        - Dockerfile
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: /api/*
+      - type: rewrite
+        source: /*
+        destination: /
